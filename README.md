@@ -1,3 +1,11 @@
+## This fork. 
+
+In this repo I've just made a single small modification to glample's NER tagger: a toggle to turn on and off the trainability of the pretrained embedding matrix. This will essentially freeze the 
+state of the word vectors you use as a starting point for the model (if you use any). The purpose of this is for evaluation of said embeddings (if we allow the train.py workflow to modify this
+matrix, we don't know whether the accuracy is just a result of the model's ability to retrain and correct errors, or if the pretrained embeddings are actually contributing to the model). I'm not
+even 100% sure that this feature doesn't already exist in this codebase, but I wasn't able to find it and didn't want to spend any more time searching for it. 
+
+
 ## NER Tagger
 
 NER Tagger is an implementation of a Named Entity Recognizer that obtains state-of-the-art performance in NER on the 4 CoNLL datasets (English, Spanish, German and Dutch) without resorting to any language-specific knowledge or resources such as gazetteers. Details about the model can be found at: http://arxiv.org/abs/1603.01360
