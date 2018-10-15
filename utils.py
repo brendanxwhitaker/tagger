@@ -73,6 +73,12 @@ def create_mapping(dico):
     Create a mapping (item to ID / ID to item) from a dictionary.
     Items are ordered by decreasing frequency.
     """
+    # The lambda expression below takes in a list x and 
+    # returns a tuple (negative of second element, first element).
+
+    # When you sort with a tuple as below, it first sorts by the first
+    # element, and then the second, to break ties. So we sort by 
+    # decreasing frequency, and then by the word (alphabetical). 
     sorted_items = sorted(dico.items(), key=lambda x: (-x[1], x[0]))
     id_to_item = {i: v[0] for i, v in enumerate(sorted_items)}
     item_to_id = {v: k for k, v in id_to_item.items()}
