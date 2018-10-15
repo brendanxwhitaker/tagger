@@ -145,6 +145,29 @@ train_sentences = loader.load_sentences(opts.train, lower, zeros)
 dev_sentences = loader.load_sentences(opts.dev, lower, zeros)
 test_sentences = loader.load_sentences(opts.test, lower, zeros)
 
+# What is the structure of a sentence?
+'''
+for s in train_sentences:
+    print("This is a single element in train_sentences: ", s)
+    exit()
+'''
+
+# This is what a sample sentence looks like:
+# (taken from "train_sentences")
+'''
+ [
+    [u'EU', u'NNP', u'I-NP', u'I-ORG'], 
+    [u'rejects', u'VBZ', u'I-VP', u'O'], 
+    [u'German', u'JJ', u'I-NP', u'I-MISC'], 
+    [u'call', u'NN', u'I-NP', u'O'], 
+    [u'to', u'TO', u'I-VP', u'O'], 
+    [u'boycott', u'VB', u'I-VP', u'O'], 
+    [u'British', u'JJ', u'I-NP', u'I-MISC'], 
+    [u'lamb', u'NN', u'I-NP', u'O'], 
+    [u'.', u'.', u'O', u'O']
+]
+'''
+
 # Use selected tagging scheme (IOB / IOBES)
 update_tag_scheme(train_sentences, tag_scheme)
 update_tag_scheme(dev_sentences, tag_scheme)

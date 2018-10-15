@@ -53,10 +53,15 @@ def update_tag_scheme(sentences, tag_scheme):
             raise Exception('Unknown tagging scheme!')
 
 
+# "lower" is a boolean that tells the function whether or not to convert
+# all words to lowercase. 
 def word_mapping(sentences, lower):
     """
     Create a dictionary and a mapping of words, sorted by frequency.
     """
+
+    # In the below, for example, 
+    # s = [u'EU', u'NNP', u'I-NP', u'I-ORG'] 
     words = [[x[0].lower() if lower else x[0] for x in s] for s in sentences]
     dico = create_dico(words)
     dico['<UNK>'] = 10000000
