@@ -52,7 +52,7 @@ def shared(shape, name):
         value = drange * np.random.uniform(low=-1.0, high=1.0, size=shape)
     return theano.shared(value=value.astype(theano.config.floatX), name=name)
 
-
+# creates a dict that maps word to frequency
 def create_dico(item_list):
     """
     Create a dictionary of items from a list of list of items.
