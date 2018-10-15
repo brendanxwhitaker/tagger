@@ -61,7 +61,10 @@ def word_mapping(sentences, lower):
     """
 
     # In the below, for example, 
-    # s = [u'EU', u'NNP', u'I-NP', u'I-ORG'] 
+    # s = [u'EU', u'NNP', u'I-NP', u'I-ORG']
+
+    # So "words" is just a list of list of words, where each list
+    # in words is a sentence (list of strings).  
     words = [[x[0].lower() if lower else x[0] for x in s] for s in sentences]
     dico = create_dico(words)
     dico['<UNK>'] = 10000000

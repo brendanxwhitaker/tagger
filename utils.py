@@ -52,7 +52,10 @@ def shared(shape, name):
         value = drange * np.random.uniform(low=-1.0, high=1.0, size=shape)
     return theano.shared(value=value.astype(theano.config.floatX), name=name)
 
-# creates a dict that maps word to frequency
+# Creates a dict that maps word to frequency. 
+
+# "item_list" is just a list of list of words, where each list
+# in words is a sentence (list of strings).  
 def create_dico(item_list):
     """
     Create a dictionary of items from a list of list of items.
@@ -70,16 +73,32 @@ def create_dico(item_list):
 
 def create_mapping(dico):
     """
+    Gives each word in the vocab a unique ID, i.e. natural number. 
     Create a mapping (item to ID / ID to item) from a dictionary.
-    Items are ordered by decreasing frequency.
+    Items (and their IDs) are ordered by decreasing frequency.
     """
+
     # The lambda expression below takes in a list x and 
     # returns a tuple (negative of second element, first element).
 
     # When you sort with a tuple as below, it first sorts by the first
     # element, and then the second, to break ties. So we sort by 
     # decreasing frequency, and then by the word (alphabetical). 
+
+    # "dico" sample element: {'germany': 5}
+    # Structure:             {<word>: <frequency>}
+    
+    # "sorted_items" is a list of key value pairs from dico 
     sorted_items = sorted(dico.items(), key=lambda x: (-x[1], x[0]))
+    
+    # "enumerate(sorted_items) loops over the elements "v" in 
+    # "sorted_items" indexed by "i".
+    
+    # We are assigning a unique id (integer index) to each unique 
+    # word in the dict. 
+
+    # Note items are words and the id is the index (number)
+    # corresponding to that word.  
     id_to_item = {i: v[0] for i, v in enumerate(sorted_items)}
     item_to_id = {v: k for k, v in id_to_item.items()}
     return item_to_id, id_to_item
